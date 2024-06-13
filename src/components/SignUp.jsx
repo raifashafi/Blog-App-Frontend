@@ -2,14 +2,14 @@ import axios from 'axios'
 import React, { useState } from 'react'
 
 const SignUp = () => {
-    const [data,setData]=useState([
+    const [data,setData]=useState(
         {
             "name":"",
             "email":"",
             "password":"",
             "confirmpassword":""
         }
-    ])
+    )
     const inputHandler=(event)=>{
       setData({...data,[event.target.name]:event.target.value})
     }
@@ -24,12 +24,7 @@ const SignUp = () => {
                     alert("error")
                 }
             }
-        ).catch(
-            (error)=>{
-                console.log(error.message)
-                alert(error.message)
-            }
-        ).finally()
+        ).catch().finally()
     }
 
   return (
@@ -41,7 +36,7 @@ const SignUp = () => {
                     <div className="row g-3">
                         <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                             <label htmlFor="">username</label>
-                            <input type="text" className="form-control"  name='username' value={data.username} onChange={inputHandler}/>
+                            <input type="text" className="form-control"  name='name' value={data.name} onChange={inputHandler}/>
                         </div>
                         <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                         <label htmlFor="" className="form-label">emailid</label>
@@ -53,9 +48,9 @@ const SignUp = () => {
                         </div>
                         <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
                             <label htmlFor="" className="form-label">confirm password</label>
-                            <input type="text" className="form-control" name='confirm' value={data.confirmpassword} onChange={inputHandler} />
+                            <input type="text" className="form-control" name='confirmpassword' value={data.confirmpassword} onChange={inputHandler} />
                         </div>
-                        <div className="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
+                        <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                             <button className="btn btn-success" onClick={readValue}>Sign Up</button>
                         </div>
                     </div>
