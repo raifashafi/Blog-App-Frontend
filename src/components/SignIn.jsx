@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
     const [data,setData]=useState([
@@ -15,13 +16,17 @@ const readValue=()=>{
     axios.post("http://localhost:8081/signIn",data).then(
         (response)=>{
         if (response.data.status=="success") {
-            alert("success")
+
+           sessionStorage.setItem("token",response.data.token)
+           sessionStorage.setItem("userId",response.data.userId)
+           navigate("/dashboard")
         } else {
             alert("error")
         }
     }
     ).catch().finally()
 }
+let navigate = useNavigate()
   return (
     <div>
 
